@@ -1,13 +1,25 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"; // PayloadAction redux nos da para tipar el payload
 
 // Definimos un array de usuarios por defecto
 const DEFAULT_STATE = [
   {
-    id: "1",
-    name: "Yazman Rodriguez",
-    email: "yazmanito@gmail.com",
-    github: "yazmanito",
-  },
+		id: "1",
+		name: "anonimo",
+		email: "messio@gmail.com",
+		github: "mauredev",
+	},
+	{
+		id: "2",
+		name: "Gonzalo Pozo",
+		email: "leomessi@gmail.com",
+		github: "goncy",
+	},
+	{
+		id: "3",
+		name: "Midu",
+		email: "cr7@gmail.com",
+		github: "midudev",
+	},
   // ... otros usuarios ...
 ];
 
@@ -27,6 +39,7 @@ export interface UserWithId extends User {
 // Inicializamos el estado con datos almacenados en localStorage si existen, de lo contrario, usamos el DEFAULT_STATE
 const initialState: UserWithId[] = (() => {
   // Obtenemos los datos del localStorage o utilizamos DEFAULT_STATE si no hay datos
+  // localStorage donde persisten lo datos, ademas no tiene vencimiento
   const persistedState = localStorage.getItem("__redux__state__");
   return persistedState ? JSON.parse(persistedState).users : DEFAULT_STATE;
 })();
@@ -36,6 +49,7 @@ const initialState: UserWithId[] = (() => {
 export const usersSlice = createSlice({
   name: "users", // Nombre del slice para organizar en la store
   initialState, // Estado inicial del slice
+  //función que especifica cómo el estado de una aplicación cambia en respuesta a acciones enviadas a la stor de Redux
   reducers: {
 
     // Reducer para añadir un nuevo usuario
@@ -65,4 +79,5 @@ export const usersSlice = createSlice({
 
 // Exportamos el reducer por defecto y las acciones específicas para ser usadas en otros módulos
 export default usersSlice.reducer;
+// Exportamos las acciones
 export const { addNewUser, deleteUserById, rollbackUser } = usersSlice.actions;

@@ -34,7 +34,7 @@ export function CreateNewUser() {
 		<Card style={{ marginTop: "16px" }}>
 			<Title>Create New User</Title>
 
-			<form onSubmit={handleSubmit} className="">
+			<form onSubmit={handleSubmit}>
 				<TextInput name="name" placeholder="Aquí el nombre" />
 				<TextInput name="email" placeholder="Aquí el email" />
 				<TextInput name="github" placeholder="Aquí el usuario de GitHub" />

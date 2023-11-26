@@ -35,10 +35,11 @@ export function ListUsers() {
         </TableHead>
 
         <TableBody>
-          {users.map((item) => (
-            <TableRow key={item.name}>
+          {
+            users.map((item) => (
+            <TableRow key={item.id}>
               {/* Mostrar detalles de cada usuario en filas de la tabla */}
-              <TableCell>{item.id}</TableCell>
+              <TableCell>{item.github}</TableCell>
               <TableCell style={{ display: "flex", alignItems: "center" }}>
                 {/* Mostrar imagen y nombre del usuario */}
                 <img
@@ -91,7 +92,8 @@ export function ListUsers() {
                 </button>
               </TableCell>
             </TableRow>
-          ))}
+            ))
+          }
         </TableBody>
       </Table>
     </Card>
